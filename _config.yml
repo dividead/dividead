@@ -1,22 +1,22 @@
 # Site settings
-title:       Pixyll
-email:       your_email@example.com
-author:      John Otander
-description: "A simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff."
+title:       die the death
+email:       divided.joy@gmail.com
+author:      Una Owen
+description: "the weight of a sin depends on the person measuring it"
 baseurl:     ""
-url:         "http://pixyll.com"
+url:         "http://dividead.github.io/"
 
 # Google analytics
-google_analytics:
+google_analytics: UA-55289510-2
 
 # Optional features
-animated:           false
+animated:           true
 show_related_posts: false
 show_post_footers:  false
 
 # Social icons
-show_social_icons: false
-github_username:
+show_social_icons: true
+github_username: dividead
 twitter_username:
 google_plus_id:
 linkedin_username:

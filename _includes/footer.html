@@ -2,8 +2,8 @@
   <div class="p2 wrap">
     <div class="measure mt1 center">
       <small>
-        Crafted with &lt;3 by <a href="http://johnotander.com">John Otander</a> (<a href="https://twitter.com/4lpine">@4lpine</a>).<br>
-        &lt;/&gt; available on <a href="https://github.com/johnotander/pixyll">Github</a>.
+        &copy; {{ site.time | date: '%Y' }} {{ site.author }} <br>
+        <a href="https://github.com/johnotander/pixyll">Pixyll theme</a> by <a href="http://johnotander.com">John Otander</a>
       </small>
     </div>
   </div>
@@ -11,13 +11,13 @@
 
 {% if site.google_analytics %}
 <script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-ga('create', '{{ site.google_analytics }}', 'auto');
-ga('send', 'pageview');
+  ga('create', 'UA-55289510-2', 'auto');
+  ga('send', 'pageview');
 
 </script>
 {% endif %}
