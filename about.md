@@ -4,4 +4,4 @@ title: About Me
 permalink: /about/
 ---
 
-Ruby, JavaScript, Systems Administration
+Ruby, JavaScript, sys_admin
