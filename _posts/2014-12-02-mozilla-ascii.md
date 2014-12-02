@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      mozilla ascii
+title:      mozilla hidden ascii
 date:       2014-12-02 12:28:43
 summary:    Tabzilla.EasterEgg()
 categories: hidden_ascii
