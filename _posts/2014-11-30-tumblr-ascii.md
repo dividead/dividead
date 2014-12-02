@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      tumblr ascii
+title:      tumblr hidden ascii
 date:       2014-11-30 16:58:43
 summary:    
 categories: hidden_ascii
