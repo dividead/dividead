@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>4chanize</title>
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
+  <link rel="stylesheet" href="//bootswatch.com/simplex/bootstrap.min.css">
+  <style>
+    .main {
+      padding: 200px 15px;
+      margin: 0 auto;
+      width: 500px;
+    }
+  </style>
+</head>
+<body ng-app="4chanize">
+<div class="container">
+  <div class="main" ng-controller="4Cont">
+    <h2>shitposting just became 146% easier</h2>
+    <form novalidate class="simple-form">
+      <input type="text" ng-model="string" ng-init="string='btfo'" />    <button ng-click="reset()">RESET</button>
+    </form><br>
+    {{string.toUpperCase().split('').join(" ")}}
+    <div ng-repeat="i in string.toUpperCase().slice(1).split('') track by $index">{{i}}</div>
+  </div>
+</div>
+
+<script>
+  angular.module('4chanize', [])
+    .controller('4Cont', ['$scope', function($scope) {
+      $scope.reset = function() {
+        $scope.string = '';
+      };
+      $scope.reset();
+    }]);
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-55289510-2', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>
