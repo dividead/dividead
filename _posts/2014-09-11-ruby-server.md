@@ -2,7 +2,7 @@
 layout:     post
 title:      ruby server
 date:       2014-09-11 22:11:43
-summary:    in one line
+summary:    `ruby -run -ehttpd . -p3000`
 categories: ruby
 ---
 
