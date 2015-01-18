@@ -4,4 +4,4 @@ title: About Me
 permalink: /about/
 ---
 
-Ruby, JavaScript, sys_admin
+fucking nothing
