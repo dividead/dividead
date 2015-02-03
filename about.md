@@ -4,4 +4,6 @@ title: About Me
 permalink: /about/
 ---
 
-fucking nothing
+[codepen.io](http://codepen.io/dividead/)
+
+[codewars](http://www.codewars.com/users/dividead)
