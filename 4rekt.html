@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>4rekt</title>
+  <script src="http://fb.me/react-0.12.2.js"></script>
+  <script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+  <link rel="stylesheet" href="//bootswatch.com/simplex/bootstrap.min.css">
+  <style>
+    .main {
+      padding: 200px 15px;
+      margin: 0 auto;
+      width: 500px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="main" id="content"></div>
+      <script type="text/jsx">
+        var Four = React.createClass({
+          getInitialState: function(){
+            return {str: 'btfo'}
+          },
+          getString: function(str){
+            this.setState({str: str})
+          },
+          render: function(){
+            return (
+              <div>
+                <Btfo getString={this.getString} />
+                <List str={this.state.str}/>
+              </div>
+            )
+          }
+        })
+        
+        var Btfo = React.createClass({
+          passString: function(e){
+            e.preventDefault()
+            var str = this.refs.str.getDOMNode().value.trim()
+            if (!str) return
+            this.props.getString(str)
+          },
+          render: function(){
+            return (
+              <form onSubmit={this.passString}>
+                <input type="text" placeholder="btfo" ref="str" ></input>
+                <input type="submit" value="post"></input>
+              </form>
+            )
+        }
+        })
+        
+        var List = React.createClass({
+          render: function(){
+            var btf = this.props.str.slice(1).toUpperCase().split('').map(function(x){
+              return (
+                <p><strong>{x}</strong></p>
+              )
+            })
+              return (
+                <div>
+                  <p><strong>{this.props.str.toUpperCase().split('').join(' ')}</strong></p>
+                  {btf}
+                </div>
+              )
+          }
+        })
+        
+        React.render(
+          <Four />,
+          document.getElementById('content')
+        );
+      </script>
+    </div>  
+</body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-55289510-2', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>
