@@ -6,5 +6,5 @@ summary:    one-two-way
 categories: javascript
 ---
 
-![react](/react.html)
-![angular](/angular.html)
+[react](/react.html)
+[angular](/angular.html)
