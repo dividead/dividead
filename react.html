@@ -45,9 +45,8 @@
           },
           render: function(){
             return (
-              <form onSubmit={this.passString}>
+              <form onChange={this.passString}>
                 <input type="text" placeholder="btfo" ref="str" ></input>
-                <input type="submit" value="try"></input>
               </form>
             )
         }
