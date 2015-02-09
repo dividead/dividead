@@ -40,7 +40,7 @@
           passString: function(e){
             e.preventDefault()
             var str = this.refs.str.getDOMNode().value.trim()
-            if (!str) return
+            if (!str) str = 'btfo' //return
             this.props.getString(str)
           },
           render: function(){
