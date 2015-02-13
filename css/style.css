@@ -1,0 +1,169 @@
+@charset "UTF-8";
+/* A rudimentary "reset" */
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+}
+
+/* Make HTML 5 elements block level */
+article, aside, figure, footer, header, hgroup, nav, section, time {
+  display: block;
+}
+
+html {
+  background: mintcream;
+}
+
+html, code {
+  color: darkslategrey;
+  font-family: Inconsolata, monospace;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+#container {
+  width: 700px;
+  margin: auto;
+}
+
+a {
+  color: crimson;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: 133%;
+}
+
+h2 {
+  font-size: 111%;
+}
+
+code {
+  background: lightgoldenrodyellow;
+  padding: 2px 4px;
+}
+
+.highlight code {
+  background: initial;
+}
+
+blockquote {
+  padding: 0 48px;
+  font-style: italic;
+  position: relative;
+}
+blockquote:before {
+  content: '“';
+  font-size: 400%;
+  left: -12px;
+  line-height: 1;
+  position: absolute;
+}
+blockquote ul, blockquote ol {
+  list-style-position: inside;
+}
+
+#header {
+  margin: 24px 0;
+}
+#header h1,
+#header nav,
+#header ul,
+#header li {
+  display: inline-block;
+  vertical-align: baseline;
+}
+#header nav:before {
+  content: '|';
+  color: lightslategrey;
+}
+#header a {
+  color: lightslategrey;
+}
+#header a:hover {
+  text-decoration: none;
+}
+#header li {
+  margin-left: 12px;
+  list-style: none;
+}
+#header h1 {
+  font-size: 111%;
+}
+#header h1 span {
+  color: darkslategrey;
+  font-size: 133%;
+}
+
+#content p,
+#content ul,
+#content pre {
+  margin-bottom: 1em;
+}
+
+header {
+  margin-bottom: 1em;
+}
+
+#post-list .date {
+  width: 128px;
+}
+
+time {
+  color: lightslategrey;
+}
+
+footer {
+  margin: 24px auto;
+  text-align: center;
+}
+
+.social-links {
+  margin: auto;
+  display: inline-block;
+  font-size: 24px;
+}
+.social-links a {
+  color: lightslategrey;
+}
+.social-links a:hover {
+  color: darkslategrey;
+  text-decoration: none;
+}
+.social-links li {
+  display: inline-block;
+  list-style: none;
+}
+
+.post-footer {
+  text-align: center;
+}
+
+.gist {
+  font-size: 75%;
+}
+
+@media screen and (max-width: 800px) {
+  #container {
+    width: 92%;
+  }
+}
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 14px;
+  }
+
+  ul, ol {
+    list-style-position: inside;
+  }
+
+  #header nav {
+    display: block;
+  }
+}

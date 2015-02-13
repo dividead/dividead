@@ -1,20 +1,63 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>if then else</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width">
 
-<div class="home">
+  <link href="/favicon.ico" rel="shortcut icon" type="image/ico">
+  <link href="http://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <div class="posts">
-    {% for post in paginator.posts %}
-      <div class="post">
-        <a href="{{ post.url | prepend: site.baseurl }}" class="post-link">
-          <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</p>
-          <h3 class="h2 post-title">{{ post.title }}</h3>
-          <p class="post-summary">{{ post.summary }}</p>
-        </a>
-      </div>
-    {% endfor %}
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-55289510-2', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+<body>
+
+  <div id="container">
+
+    <header id="header">
+      <h1><a href="/"><span>U.N.Owen</span> was her?</a></h1>
+      <nav>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/posts">Posts</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="content">
+      <article>
+        <header>
+          <h1>expect nothing</h1>
+
+        </header>
+        <div class="post-content">
+          <p>Well, I always know what I want. And when you know what you want--you go toward it. Sometimes you go very fast, and sometimes only an inch a year. Perhaps you feel happier when you go fast. I don't know. I've forgotten the difference long ago, because it really doesn't matter, so long as you move.</p>
+          
+          <h1>links</h1>
+          <a href="http://codepen.io/dividead/" >[codepen.io]</a>
+          <a href="http://www.codewars.com/users/dividead" >[codewars]</a>
+        </div>
+      </article>
+    </section>
+
+    <footer>
+      <ul class="social-links">
+        <li><a href="https://twitter.com/Ux3F3A"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="https://github.com/dividead"><i class="fa fa-github"></i></a></li>
+      </ul>
+    </footer>
   </div>
 
-  {% include pagination.html %}
-</div>
+</body>
+</html>
+
