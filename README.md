@@ -1,1 +1,1 @@
-[reactjs.ru](reactjs.ru)
+[reactjs.ru](http://reactjs.ru)
