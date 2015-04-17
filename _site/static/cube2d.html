@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Cube2d</title>
+    <style>
+      #cube {border: 1px solid #d3d3d3; display : block; margin : auto;}
+    </style>
+  </head>
+  <body>
+    <canvas id="cube"> </canvas>
+    <script>
+        var c = document.getElementById("cube"),
+        ctx = c.getContext("2d"),
+        friction = 0.9, //more = faster
+        gravity = 0.3,  //less = higher
+        width = 800,
+        height = 800,
+        keys = [],
+        player = {
+          x: 405,
+          y: 105,
+          width : 30,
+          height : 30,
+          speed: 3,
+          velX: 0,
+          velY: 0,
+          jumping: false,
+          solid: true
+        },
+        wall = {
+          x: 600,
+          y: 600,
+          width: 100,
+          height: 10,
+          solid: true
+        };
+    c.width = width;
+    c.height = height;
+
+    function tile(x,y,w,h,t){
+      ctx.beginPath();
+      ctx.rect(x, y, w, h);
+      ctx.fillStyle = "rgba(182,12,72, " + t + ")"; //"#B60C48"
+      ctx.fill();
+    }
+    function background(){
+      function bkgrnd(){
+        var m = 1;
+        for(var y = 5; y < height; y+=100){
+        for(var x = -100; x < width; x+=100){
+          tile(x+m,y,90,90,0.1); m+=2;}}
+      }
+      bkgrnd();
+      function wall_letter(x, y, a){
+        ctx.beginPath();
+        ctx.rect(x, y, 35, 35);
+        ctx.strokeStyle = "rgba(182,12,72, 1";
+        ctx.stroke();
+        ctx.font = "bold 25px Calibri";
+        ctx.fillStyle = "rgba(182,12,72, 1";
+        ctx.fillText(a, x+5, y+25);
+      }
+
+      wall_letter(400, 50,  'W');
+      wall_letter(350, 100, 'A');
+      wall_letter(400, 100, 'S');
+      wall_letter(450, 100, 'D');
+      (function floor(){
+        for (var y = width-100; y < width; y+=20){
+          for (var x = 2; x < height; x+=20){
+            tile(x,y,16,16,Math.random());
+          }
+        }
+      })();
+    }
+    // stolen from http://codepen.io/loktar00/pen/jHwBL?editors=001
+    function render() { // check keys 
+      if (keys[87]) { // w
+        if(!player.jumping){
+         player.jumping = true;
+         player.velY = -player.speed*3;
+        }
+      }
+      if (keys[68]) { // d
+          if (player.velX < player.speed) {
+              player.velX++;  } }
+      if (keys[65]) { // a
+          if (player.velX > -player.speed) {
+              player.velX--;  } }
+
+      player.velX *= friction;
+      player.velY += gravity;
+      player.x += player.velX;
+      player.y += player.velY;
+
+      if (player.x >= width-player.width) {
+          player.x = width-player.width;
+      } else if (player.x <= 0) {
+          player.x = 0;
+      }
+
+      if(player.y >= height-player.height - 100){
+          player.y = height - player.height - 100;
+          player.jumping = false;
+      }
+      ctx.clearRect(0,0,c.width,c.height);
+      requestAnimationFrame(render);
+      background();
+      tile(player.x, player.y, player.width, player.height, 1);
+      tile(wall.x,wall.y, wall.width, wall.height);
+      ctx.fillText(Math.round(player.x) + ', ' + Math.round(player.y), 10, 35);
+    }
+    requestAnimationFrame(render);
+
+    document.body.addEventListener("keydown", function(e) {
+        keys[e.keyCode] = true;});
+
+    document.body.addEventListener("keyup", function(e) {
+        keys[e.keyCode] = false;});
+    </script>
+  </body>
+</html>
