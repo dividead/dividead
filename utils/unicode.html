@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>if then else</title>
+  <style type="text/css">
+    body {
+      margin: 40px auto;
+      max-width: 650px;
+      line-height: 1.6;
+      font-size: 18px;
+      color: #444;
+      padding: 0 10px
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.2
+    }
+  </style>
+</head>
+
+<body>
+  <div style="display: flex;">
+    <div>
+      <label for="raw">ctrl+v:</label>
+      <textarea id="raw" name="raw" rows="5" cols="33" spellcheck="true"></textarea>
+    </div>
+    <div>
+      <label for="clean">ctrl+c:</label>
+      <textarea id="clean" name="clean" rows="5" cols="33" readonly></textarea>
+    </div>
+  </div>
+
+  <script>
+    const map = {
+      1077: 'e',
+      1030: 'I',
+      1086: 'o',
+      1110: 'i',
+      1091: 'y',
+      1109: 's',
+      1072: 'a',
+      1040: 'A',
+    };
+    const raw = document.getElementById('raw');
+    const clean = document.getElementById('clean');
+    raw.addEventListener('input', () => {
+      const str = Array.from(raw.value).map(c => {
+        const code = c.charCodeAt(0);
+        return map[code] ? map[code] : c;
+      }).join('');
+
+      clean.value = str;
+    })
+  </script>
+</body>
+
+</html>
