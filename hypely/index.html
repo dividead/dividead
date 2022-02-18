@@ -1,0 +1,203 @@
+<html>
+<head>
+    <title>
+        Worst 2048 Wordly Crossovers
+    </title>
+    <style>
+        body { background-color: #333; }
+        .c { 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #canvas { 
+            border: 1px solid #d3d3d3;
+        }
+    </style>
+</head>
+<body>
+    <div class="c">
+        <canvas id="canvas"/>
+    </div>
+
+    <script >
+const canvas = document.getElementById('canvas')
+const ctx = canvas.getContext('2d')
+const W = 1120
+const H = 570
+canvas.width = W
+canvas.height = H
+
+ctx.fillStyle = 'rgba(255,255,255,1)'
+ctx.strokeStyle = 'rgba(255,255,255,0.5)'
+ctx.font = "bold 100px Roboto, monospace";
+
+const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+const rand = () => chars[Math.floor(Math.random() * chars.length)]
+
+let X = 2
+let Y = 0
+let C = rand()
+let S = null
+let turns = 0
+let mode = 1
+const word = [71, 79, 79, 83, 69].map(c => String.fromCharCode(c))
+const answer = Array(5).fill(undefined)
+
+const spawn = () => {
+    X = 2
+    Y = 0
+    C = rand()
+}
+
+const text = () => {
+    ctx.fillText(C, X*100 + 30, Y*100 + 90);
+}
+
+const box = (x, y, w, h) => {
+    ctx.strokeRect(x, y, w, h)
+}
+
+const grid = () => {
+    for(let x = 10; x < 500; x+= 100){
+        for(let y = 10; y < 500; y+= 100){
+            box(x, y, 100, 100)
+        }
+    }
+
+    ctx.fillStyle = 'rgba(255,0,255,0.1)'
+    ctx.fillText('ᚺ', 425, 80); // destruction
+    ctx.fillText('ᚠ', 125, 280); // wealth
+    ctx.fillText('ᚦ', 225, 280); // danger
+    if(S){
+        ctx.fillText(S, 325, 280);
+    } else {
+        ctx.fillText('ᛃ', 325, 280); // harvest
+    }
+    ctx.fillStyle = 'rgba(255,255,255,1)'
+}
+
+const clear = () => {
+    ctx.clearRect(0, 0, W, H)
+}
+
+const hint = () => {
+    ctx.font = "18px Roboto, monospace";
+    for(let i = 0; i < chars.length; i++){
+        ctx.fillText(chars[i], 610 + i*19, 25);
+        ctx.fillText(chars[i], 590, 45 + i*19);
+    }
+    ctx.font = "bold 100px Roboto, monospace";
+}
+
+const update = () => {
+    clear()
+    grid()
+    text()
+
+    for(let i = 0; i < 5; i++){
+        let c = answer[i]
+        if(!c) continue
+
+        if(word[i] === c){
+            ctx.fillStyle = 'rgba(106,170,100,1)'
+        } else if(word.includes(c)){
+            ctx.fillStyle = 'rgba(201,180,88,1)'
+        }
+
+        ctx.fillText(c, i*100 + 30, 4*100 + 90);
+        ctx.fillStyle = 'rgba(255,255,255,1)'
+    }
+
+    ctx.font = "bold 30px Roboto, monospace";
+    ctx.fillText(`turns: ${turns}`, 10, 550);
+    ctx.font = "bold 100px Roboto, monospace";
+
+    hint()
+}
+
+const check = () => {
+    if(X === 4 && Y === 0){
+        return spawn()
+    }
+
+    if(X === 1 && Y === 2){
+        mode = 1
+        return
+    }
+
+    if(X === 2 && Y === 2){
+        mode = -1
+        return
+    }
+
+    if(X === 3 && Y === 2){
+        if(!S){
+            S = C
+            return spawn()
+        }
+        C = S
+        S = null
+        return text()
+    }
+
+    if(Y !== 4){
+        text()
+        return
+    }
+
+
+    if(!answer[X]){
+        answer[X] = C
+    } else {
+        answer[X] = chars[(Math.abs(answer[X].charCodeAt(0) + (mode*C.charCodeAt(0))) % 65 + mode) % 26]
+    }
+
+    mode = 1
+    spawn()
+}
+
+const move = (x, y) => {
+    if(x){
+        let next = X + x
+        if(next >= 0 && next < 5){
+            X = next
+            turns++
+        }
+    } else if(y){
+        let next = Y + y
+        if(next >= 0 && next < 5){
+            Y = next
+            turns++
+        }
+    }
+
+    check()
+    update()
+}
+
+window.addEventListener('keydown', e => {
+    if(answer.join('') === word.join('')) return
+    switch (e.key) {
+        case 'ArrowDown':
+            move(0,1)
+            break
+        case 'ArrowUp':
+            move(0,-1)
+            break
+        case 'ArrowRight':
+            move(1,0)
+            break
+        case 'ArrowLeft':
+            move(-1,0)
+            break
+        default:
+            break
+    }
+})
+
+update()
+    </script>
+</body>
+</html>
