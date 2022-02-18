@@ -82,11 +82,30 @@ const clear = () => {
     ctx.clearRect(0, 0, W, H)
 }
 
+const add = (cx, cy) => {
+    return chars[(Math.abs(cx.charCodeAt(0) + (mode*cy.charCodeAt(0))) % 65 + mode) % 26] || 'Z'
+}
+
 const hint = () => {
     ctx.font = "18px Roboto, monospace";
     for(let i = 0; i < chars.length; i++){
         ctx.fillText(chars[i], 610 + i*19, 25);
         ctx.fillText(chars[i], 590, 45 + i*19);
+    }
+    for(let y = 0; y < chars.length; y++){
+        if(chars[y] === C){
+            ctx.strokeStyle = 'rgba(255,0,255,1)'
+            box(605 , 29 + y*19 , 500, 22)
+            ctx.strokeStyle = 'rgba(255,255,255,0.5)'
+        }
+        if(answer.includes(chars[y])){
+            ctx.strokeStyle = 'rgba(255,0,255,1)'
+            box(608 + y*19 , 29 , 18, 500)
+            ctx.strokeStyle = 'rgba(255,255,255,0.5)'
+        }
+        for(let x = 0; x < chars.length; x++){
+            ctx.fillText(add(chars[x], chars[y]), 610 + x*19, 45 + y*19);
+        }
     }
     ctx.font = "bold 100px Roboto, monospace";
 }
@@ -151,7 +170,7 @@ const check = () => {
     if(!answer[X]){
         answer[X] = C
     } else {
-        answer[X] = chars[(Math.abs(answer[X].charCodeAt(0) + (mode*C.charCodeAt(0))) % 65 + mode) % 26]
+        answer[X] = add(answer[X], C)
     }
 
     mode = 1
