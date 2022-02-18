@@ -92,21 +92,22 @@ const hint = () => {
         ctx.fillText(chars[i], 610 + i*19, 25);
         ctx.fillText(chars[i], 590, 45 + i*19);
     }
+    ctx.fillStyle = 'rgba(255,255,255,0.3)'
     for(let y = 0; y < chars.length; y++){
         if(chars[y] === C){
             ctx.strokeStyle = 'rgba(255,0,255,1)'
             box(605 , 29 + y*19 , 500, 22)
             ctx.strokeStyle = 'rgba(255,255,255,0.5)'
         }
-        if(answer.includes(chars[y])){
-            ctx.strokeStyle = 'rgba(255,0,255,1)'
-            box(608 + y*19 , 29 , 18, 500)
-            ctx.strokeStyle = 'rgba(255,255,255,0.5)'
-        }
         for(let x = 0; x < chars.length; x++){
+            if(chars[y] === C && answer.includes(chars[x])){
+                ctx.fillStyle = 'rgba(201,180,88,1)'
+            }
             ctx.fillText(add(chars[x], chars[y]), 610 + x*19, 45 + y*19);
+            ctx.fillStyle = 'rgba(255,255,255,0.3)'
         }
     }
+    ctx.fillStyle = 'rgba(255,255,255,1)'
     ctx.font = "bold 100px Roboto, monospace";
 }
 
